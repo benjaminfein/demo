@@ -2,6 +2,7 @@ package com.example.demo.fruit.service;
 
 import com.example.demo.fruit.model.Fruit;
 import org.springframework.stereotype.Service;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -15,11 +16,11 @@ public class FruitService {
         fruits.add(createFruit(3, "blackberry", "autoumn", 30));
     }
 
-    public Set<Fruit> getFruits() {
+    public Set<Fruit> findAll() {
         return fruits;
     }
 
-    public Fruit create(Fruit fruit) {
+    public Fruit createFruit(Fruit fruit) {
         if (!fruits.contains(fruit)) {
             fruits.add(fruit);
             return fruit;
@@ -43,11 +44,10 @@ public class FruitService {
                 .orElseThrow(() -> new RuntimeException("No such fruit by id: " + id));
     }
 
-    public Fruit updateFruit(Fruit exitingFruit, Fruit fruitForUpdate) {
+    public void updateFruit(Fruit exitingFruit, Fruit fruitForUpdate) {
         exitingFruit.setName(fruitForUpdate.getName());
         exitingFruit.setWeight(fruitForUpdate.getWeight());
         exitingFruit.setSeason(fruitForUpdate.getSeason());
-        return exitingFruit;
     }
 
     public void deleteFruit(Fruit fruitForDeletion) {

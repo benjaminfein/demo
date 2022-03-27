@@ -15,13 +15,13 @@ public class FruitController {
     }
 
     @GetMapping("/fruits")
-    public Set<Fruit> getFruits() {
-        return fruitService.getFruits();
+    public Set<Fruit> findAll() {
+        return fruitService.findAll();
     }
 
     @PostMapping("/createFruit")
     public HttpStatus createFruit(@RequestBody Fruit fruit) {
-        fruitService.create(fruit);
+        fruitService.createFruit(fruit);
         return HttpStatus.OK;
     }
 
